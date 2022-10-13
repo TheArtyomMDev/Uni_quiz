@@ -3,15 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yousport.free.quiz">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.UniQuiz"
         android:name=".App"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".ui.main.MainActivity"
@@ -24,6 +30,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_gl82e7BRjYIcFQmrQVjCtlgorCnT21CR" />
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_kh34f9vMl7KexVpBSKsvudckzulU66z1" />
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
+
     </application>
 
 </manifest>

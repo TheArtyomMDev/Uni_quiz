@@ -42,7 +42,7 @@ fun ChoosingView(points: Int, onClick: (topic: QuizTopic) -> Unit) {
         Box(modifier = Modifier.padding(24.dp)) {
             PointsView(points = points, modifier = Modifier.align(Alignment.TopEnd))
         }
-        Box(modifier = Modifier.padding(24.dp)) {
+        Box(modifier = Modifier.padding(36.dp)) {
             Image(
                 painter = painterResource(R.drawable.game_banner),
                 contentDescription = null,

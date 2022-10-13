@@ -43,3 +43,8 @@ val Typography = Typography(
 val runboyFontFamily = FontFamily(
     Font(R.font.runboy, FontWeight.Normal)
 )
+
+val appetiteFontFamily = FontFamily(
+    Font(R.font.appetite, FontWeight.Normal)
+)
+

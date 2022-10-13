@@ -5,19 +5,28 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.lifecycleScope
 import com.yousport.free.quiz.data.model.Question
 import com.yousport.free.quiz.data.model.QuizTopic
 import com.yousport.free.quiz.ui.components.ChoosingView
 import com.yousport.free.quiz.ui.components.LoadingView
 import com.yousport.free.quiz.ui.components.QuestionView
+import com.yousport.free.quiz.ui.components.WebView
 import com.yousport.free.quiz.ui.theme.UniQuizTheme
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import java.util.prefs.Preferences
 
 class MainActivity : ComponentActivity() {
     private val vm: MainViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             UniQuizTheme {
                 val question by vm.questionFlow.collectAsState()
@@ -25,22 +34,34 @@ class MainActivity : ComponentActivity() {
                 val screenState by vm.screenStateFlow.collectAsState()
                 val points by vm.pointsFlow.collectAsState()
                 val questionIndex by vm.curQuestionIndexFlow.collectAsState()
+                val requestState by vm.requestStateFlow.collectAsState()
 
-                when(screenState) {
-                    is ScreenState.Playing -> {
-                        QuestionView(question, topic, questionIndex, points, onHomeClick = {vm.onHome()}) {
-                            vm.nextQuestion(it)
-                        }
+                vm.writePoints(points)
+
+                when(requestState) {
+                    is RequestState.Success -> {
+                        WebView()
                     }
-                    is ScreenState.Choosing -> {
-                        ChoosingView(points) {
-                            vm.onTopicChosen(it)
+                    else -> {
+                        when(screenState) {
+                            is ScreenState.Playing -> {
+                                QuestionView(question, topic, questionIndex, points, onHomeClick = {vm.onHome()}) {
+                                    vm.nextQuestion(it)
+                                }
+                            }
+                            is ScreenState.Choosing -> {
+                                ChoosingView(points) {
+                                    vm.onTopicChosen(it)
+                                }
+                            }
+                            is ScreenState.Loading -> {
+                                LoadingView((screenState as ScreenState.Loading).progress)
+                            }
                         }
-                    }
-                    is ScreenState.Loading -> {
-                        LoadingView((screenState as ScreenState.Loading).progress)
                     }
                 }
+
+
             }
         }
     }
