@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.amigoquiz.sports.ger",
+  "applicationId": "com.ferstsport.freequiz.rusaqer",
   "variantName": "release",
   "elements": [
     {
@@ -13,7 +13,7 @@
       "attributes": [],
       "versionCode": 1,
       "versionName": "1.0",
-      "outputFile": "sportsfriend-release.apk"
+      "outputFile": "xsportquiz-release.apk"
     }
   ],
   "elementType": "File"
