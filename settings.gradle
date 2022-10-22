@@ -16,3 +16,4 @@ rootProject.name = "Uni quiz"
 include ':app'
 include ':sportsfriend'
 include ':xsportquiz'
+include ':sportstypic'

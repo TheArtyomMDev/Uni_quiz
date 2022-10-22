@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "957376778050",
+    "project_id": "tipicoarty",
+    "storage_bucket": "tipicoarty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957376778050:android:fcf29b29cf5445a0d5c2db",
+        "android_client_info": {
+          "package_name": "com.tipifreequiz.bavari"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957376778050-4mtlkfq4v8f7uq2b0a8bgsj3bp9ipm9b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNn8Slmz4B8xM9ZT6teioV_DuwCl2iDHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957376778050-4mtlkfq4v8f7uq2b0a8bgsj3bp9ipm9b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

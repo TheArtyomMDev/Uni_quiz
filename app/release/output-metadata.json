@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.ferstsport.freequiz.rusaqer",
+  "applicationId": "com.tipifreequiz.bavari",
   "variantName": "release",
   "elements": [
     {
@@ -13,7 +13,7 @@
       "attributes": [],
       "versionCode": 1,
       "versionName": "1.0",
-      "outputFile": "xsportquiz-release.apk"
+      "outputFile": "sportstypic-release.apk"
     }
   ],
   "elementType": "File"
