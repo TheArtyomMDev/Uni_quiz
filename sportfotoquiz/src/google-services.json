@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1065070979269",
+    "project_id": "xartuoom2",
+    "storage_bucket": "xartuoom2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065070979269:android:7d9fc4d58446cc2491e8ac",
+        "android_client_info": {
+          "package_name": "com.turnamentfoto.free.quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065070979269-2q4801k3h5tq476jec469f42b4kbrchh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD2ai-zl0khDZXPZja6zd2MjRNk-Q63Pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065070979269-2q4801k3h5tq476jec469f42b4kbrchh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
