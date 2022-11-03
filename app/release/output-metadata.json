@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.dominikwannemaker.sportquiz.freo",
+  "applicationId": "com.ferstsport.freequiz.rusaqer",
   "variantName": "release",
   "elements": [
     {
@@ -13,7 +13,7 @@
       "attributes": [],
       "versionCode": 1,
       "versionName": "1.0",
-      "outputFile": "wintime-release.apk"
+      "outputFile": "xsportquiz-release.apk"
     }
   ],
   "elementType": "File"

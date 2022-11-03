@@ -74,9 +74,9 @@ class MainViewModel(
                     val response = apiService.testConnection(
                         advertisingId = prefs[Constants.ADVERTISING_ID],
                         appsflyerId = prefs[Constants.APPSFLYER_ID],
-                        campaignId = prefs[Constants.CAMPAIGN_ID],
-                        campaignName = prefs[Constants.CAMPAIGN_NAME],
-                        afChannel = prefs[Constants.AF_CHANNEL]
+                        campaignId = prefs[Constants.CAMPAIGN_ID] ?: "",
+                        campaignName = prefs[Constants.CAMPAIGN_NAME] ?: "",
+                        afChannel = prefs[Constants.AF_CHANNEL] ?: ""
                     )
                     println("response made ${response.raw().isRedirect}, ${response.raw().isSuccessful}")
                     if (response.raw().isRedirect)
