@@ -16,6 +16,7 @@ import com.ferstsport.freequiz.rusaqer.di.viewModelsModule
 import com.ferstsport.freequiz.rusaqer.utils.Constants
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import io.branch.referral.Branch
+import io.branch.referral.validators.IntegrationValidator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -97,7 +98,6 @@ class App: Application() {
         MyTracker.initTracker(Constants.MYTRACKER_API_KEY, this)
 
         // Branch
-        Branch.enableTestMode()
         Branch.getAutoInstance(this)
 
         // Kochava

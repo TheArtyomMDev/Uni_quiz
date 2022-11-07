@@ -80,7 +80,7 @@ class App: Application() {
         MyTracker.initTracker(Constants.MYTRACKER_API_KEY, this)
 
         // Branch
-        Branch.enableTestMode()
+
         Branch.getAutoInstance(this)
 
         // Kochava

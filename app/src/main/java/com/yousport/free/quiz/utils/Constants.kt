@@ -12,7 +12,7 @@ object Constants {
     val ADVERTISING_ID = stringPreferencesKey("advertising_id")
     val APPSFLYER_ID = stringPreferencesKey("appsflyer_id")
     val CAMPAIGN_ID = stringPreferencesKey("campaign_id")
-    val CAMPAIGN_NAME = stringPreferencesKey("campaign_name")
+    val CAMPAIGN_NAME = stringPreferencesKey("campaign")
     val AF_CHANNEL = stringPreferencesKey("af_channel")
 
     const val API_URL = "https://comappm.com"

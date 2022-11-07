@@ -14,6 +14,7 @@ import com.amigoquiz.sports.ger.di.databaseModule
 import com.amigoquiz.sports.ger.di.networkModule
 import com.amigoquiz.sports.ger.di.viewModelsModule
 import com.amigoquiz.sports.ger.utils.Constants
+import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import io.branch.referral.Branch
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,20 +35,16 @@ class App: Application() {
             modules(listOf(databaseModule, networkModule, viewModelsModule))
         }
 
-
-
         // AppsFlyer
         val conversionDataListener  = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
-                //Toast.makeText(this@App, "on Data success", Toast.LENGTH_LONG).show()
                 println("data is ")
                 if(data == null) return
 
                 CoroutineScope(Dispatchers.IO).launch {
                     dataStore.edit { preferences ->
+
                         for(elem in listOf(
-                            Constants.ADVERTISING_ID,
-                            Constants.APPSFLYER_ID,
                             Constants.CAMPAIGN_ID,
                             Constants.CAMPAIGN_NAME,
                             Constants.AF_CHANNEL
@@ -55,7 +52,7 @@ class App: Application() {
                         {
                             println("Current elem is ${elem.name}, ${(elem.name in data.keys)}")
                             if(elem.name in data.keys)
-                                preferences[elem] = data[elem.name].toString()
+                                preferences[elem] = if(data[elem.name].toString() == "null") "" else data[elem.name].toString()
                         }
 
                     }
@@ -79,6 +76,15 @@ class App: Application() {
         AppsFlyerLib.getInstance().init(Constants.APPSFLYER_API_KEY, conversionDataListener, this)
         AppsFlyerLib.getInstance().start(this)
 
+        CoroutineScope(Dispatchers.IO).launch {
+            dataStore.edit { preferences ->
+                preferences[Constants.ADVERTISING_ID] =
+                    AdvertisingIdClient.getAdvertisingIdInfo(this@App).id.toString()
+                preferences[Constants.APPSFLYER_ID] =
+                    AppsFlyerLib.getInstance().getAppsFlyerUID(this@App)
+            }
+        }
+
         // Enable verbose OneSignal logging to debug issues if needed.
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
 
@@ -91,7 +97,6 @@ class App: Application() {
         MyTracker.initTracker(Constants.MYTRACKER_API_KEY, this)
 
         // Branch
-        Branch.enableTestMode()
         Branch.getAutoInstance(this)
 
         // Kochava
