@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.turnamentfoto.free.quiz.data.datasource.APIService
@@ -79,7 +80,7 @@ class MainViewModel(
                     )
                     println("response made ${response.raw().isRedirect}, ${response.raw().isSuccessful}")
                     if (response.raw().isRedirect)
-                        _requestStateFlow.emit(RequestState.Success(getURLfromConfig()))
+                        _requestStateFlow.emit(RequestState.Success(getUrlFromDatabase()))
                     else
                         _requestStateFlow.emit(RequestState.Failed)
                 } catch (e: Exception) {
@@ -180,13 +181,15 @@ class MainViewModel(
         }
     }
 
-    suspend fun getURLfromConfig(): String {
+    private suspend fun getUrlFromDatabase(): String {
         return try {
-            val remoteConfig = Firebase.remoteConfig
-            remoteConfig.fetchAndActivate().await()
-            val fetchedUrl = remoteConfig.getString("url")
+            println("Started fetching")
+            val database = Firebase.database
+            val myRef = database.getReference("url")
+
+            val fetchedUrl = myRef.get().await().value.toString()
             println("fetchedUrl : $fetchedUrl")
-            fetchedUrl.ifEmpty { Constants.API_URL }
+            return fetchedUrl
         } catch (e: Exception) {
             e.printStackTrace()
             ""

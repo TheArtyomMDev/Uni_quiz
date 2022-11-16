@@ -102,6 +102,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.3.1')
     implementation 'com.google.firebase:firebase-config-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx'
 
     // AppsFlyer
     implementation 'com.appsflyer:af-android-sdk:6.3.2'
