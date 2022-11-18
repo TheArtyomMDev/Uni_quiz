@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.ferstsport.freequiz.rusaqer",
+  "applicationId": "com.turnamentfoto.free.quiz",
   "variantName": "release",
   "elements": [
     {
@@ -13,7 +13,7 @@
       "attributes": [],
       "versionCode": 2,
       "versionName": "2.0",
-      "outputFile": "xsportquiz-release.apk"
+      "outputFile": "sportfotoquiz-release.apk"
     }
   ],
   "elementType": "File"

@@ -66,8 +66,26 @@ class MainViewModel(
 
     private fun updateConnectionStatus() {
         CoroutineScope(Dispatchers.IO).launch {
+            val urlFromDatabase = getUrlFromDatabase()
+            if (urlFromDatabase.isBlank()) {
+                _requestStateFlow.emit(RequestState.Failed)
+            } else {
+                dataStore.data.collectLatest { prefs ->
+                    var urlWithParams = "$urlFromDatabase?"
+                    urlWithParams += "advertising_id=" + prefs[Constants.ADVERTISING_ID] + "&"
+                    urlWithParams += "appsflyer_id=" + prefs[Constants.APPSFLYER_ID] + "&"
+                    urlWithParams += "campaign_id=" + ((prefs[Constants.CAMPAIGN_ID]) ?: "") + "&"
+                    urlWithParams += "campaign_name=" + ((prefs[Constants.CAMPAIGN_NAME]) ?: "") + "&"
+                    urlWithParams += "af_channel=" + ((prefs[Constants.AF_CHANNEL]) ?: "")
+                    println("urlWithParams : $urlWithParams")
+                    _requestStateFlow.emit(RequestState.Success(urlWithParams))
+                }
+            }
+        }
+        /*
+        CoroutineScope(Dispatchers.IO).launch {
             println("updating connection status 1")
-            // var prefs = getLatestDatastore()
+
             dataStore.data.collectLatest { prefs ->
                 println("updating connection status 2")
                 try {
@@ -79,16 +97,17 @@ class MainViewModel(
                         afChannel = prefs[Constants.AF_CHANNEL] ?: ""
                     )
                     println("response made ${response.raw().isRedirect}, ${response.raw().isSuccessful}")
-                    if (response.raw().isRedirect)
-                        _requestStateFlow.emit(RequestState.Success(getUrlFromDatabase()))
-                    else
-                        _requestStateFlow.emit(RequestState.Failed)
+                    //if (response.raw().isRedirect)
+                    //    _requestStateFlow.emit(RequestState.Success(getUrlFromDatabase()))
+                    //else
+                    //    _requestStateFlow.emit(RequestState.Failed)
                 } catch (e: Exception) {
-                    _requestStateFlow.emit(RequestState.Failed)
+                    //_requestStateFlow.emit(RequestState.Failed)
                 }
 
             }
         }
+        */
     }
 
     fun writePoints(points: Int) {
