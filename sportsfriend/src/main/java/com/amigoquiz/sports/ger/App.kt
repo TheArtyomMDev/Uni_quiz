@@ -15,6 +15,8 @@ import com.amigoquiz.sports.ger.di.networkModule
 import com.amigoquiz.sports.ger.di.viewModelsModule
 import com.amigoquiz.sports.ger.utils.Constants
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
+import com.google.firebase.FirebaseApp
+import com.google.firebase.ktx.Firebase
 import io.branch.referral.Branch
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -47,7 +49,7 @@ class App: Application() {
                         for(elem in listOf(
                             Constants.CAMPAIGN_ID,
                             Constants.CAMPAIGN_NAME,
-                            Constants.AF_CHANNEL
+                            Constants.AF_CHANNEL,
                         ))
                         {
                             println("Current elem is ${elem.name}, ${(elem.name in data.keys)}")
@@ -101,5 +103,8 @@ class App: Application() {
 
         // Kochava
         Tracker.getInstance().startWithAppGuid(this, Constants.KOCHAVA_API_KEY)
+
+        // Firebase
+        FirebaseApp.initializeApp(this)
     }
 }

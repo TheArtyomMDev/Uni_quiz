@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
 
                 when(requestState) {
                     is RequestState.Success -> {
-                        WebView()
+                        WebView(mUrl = (requestState as RequestState.Success).url)
                     }
                     else -> {
                         when(screenState) {

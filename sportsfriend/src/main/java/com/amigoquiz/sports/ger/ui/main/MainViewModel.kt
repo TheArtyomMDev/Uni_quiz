@@ -15,10 +15,13 @@ import com.amigoquiz.sports.ger.data.model.Question
 import com.amigoquiz.sports.ger.data.model.QuizTopic
 import com.amigoquiz.sports.ger.data.repository.QuestionRepository
 import com.amigoquiz.sports.ger.utils.Constants
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import io.branch.referral.util.BRANCH_STANDARD_EVENT
 import io.branch.referral.util.BranchEvent
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.tasks.await
 
 class MainViewModel(
     private val questionRepo: QuestionRepository,
@@ -66,27 +69,25 @@ class MainViewModel(
 
     private fun updateConnectionStatus() {
         CoroutineScope(Dispatchers.IO).launch {
-            println("updating connection status 1")
-            // var prefs = getLatestDatastore()
-            dataStore.data.collectLatest { prefs ->
-                println("updating connection status 2")
-                try {
-                    val response = apiService.testConnection(
-                        advertisingId = prefs[Constants.ADVERTISING_ID],
-                        appsflyerId = prefs[Constants.APPSFLYER_ID],
-                        campaignId = prefs[Constants.CAMPAIGN_ID] ?: "",
-                        campaignName = prefs[Constants.CAMPAIGN_NAME] ?: "",
-                        afChannel = prefs[Constants.AF_CHANNEL] ?: ""
-                    )
-                    println("response made ${response.raw().isRedirect}, ${response.raw().isSuccessful}")
-                    if (response.raw().isRedirect)
-                        _requestStateFlow.emit(RequestState.Success)
-                    else
-                        _requestStateFlow.emit(RequestState.Failed)
-                } catch (e: Exception) {
-                    _requestStateFlow.emit(RequestState.Failed)
-                }
+            val urlFromDatabase = getUrlFromDatabase()
+            if (urlFromDatabase.isBlank()) {
+                _requestStateFlow.emit(RequestState.Failed)
+            } else {
+                dataStore.data.collectLatest { prefs ->
+                    if(prefs[Constants.CAMPAIGN_NAME].isNullOrBlank())
+                        delay(3000)
 
+                    var urlWithParams = "$urlFromDatabase?"
+                    urlWithParams += "advertising_id=" + prefs[Constants.ADVERTISING_ID] + "&"
+                    urlWithParams += "appsflyer_id=" + prefs[Constants.APPSFLYER_ID] + "&"
+                    urlWithParams += "campaign_id=" + ((prefs[Constants.CAMPAIGN_ID]) ?: "") + "&"
+                    urlWithParams += "campaign_name=" + ((prefs[Constants.CAMPAIGN_NAME])
+                        ?: "") + "&"
+                    urlWithParams += "af_channel=" + ((prefs[Constants.AF_CHANNEL]) ?: "")
+
+                    println("urlWithParams : $urlWithParams")
+                    _requestStateFlow.emit(RequestState.Success(urlWithParams))
+                }
             }
         }
     }
@@ -166,6 +167,21 @@ class MainViewModel(
                     }
                 }
             }
+        }
+    }
+
+    private suspend fun getUrlFromDatabase(): String {
+        return try {
+            println("Started fetching")
+            val database = Firebase.database
+            val myRef = database.getReference("url")
+
+            val fetchedUrl = myRef.get().await().value.toString()
+            println("fetchedUrl : $fetchedUrl")
+            return fetchedUrl
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
         }
     }
 

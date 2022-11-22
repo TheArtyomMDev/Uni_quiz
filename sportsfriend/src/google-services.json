@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "500571317318",
+    "project_id": "newprog365",
+    "storage_bucket": "newprog365.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500571317318:android:9f510ef7f267c3ca98d647",
+        "android_client_info": {
+          "package_name": "com.amigoquiz.sports.ger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500571317318-4rtpj1hcsd4luil9puenk907s94o0s8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBewErrirClzOWUTBwLBY_vSnKpRUFZULc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500571317318-4rtpj1hcsd4luil9puenk907s94o0s8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

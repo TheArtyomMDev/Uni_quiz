@@ -37,7 +37,9 @@ private fun getTmpFileUri(context: Context): Uri {
 
 
 @Composable
-fun WebView() {
+fun WebView(mUrl: String) {
+    println("mUrl $mUrl")
+
     val context = LocalContext.current
     val activity = LocalContext.current as Activity
     var curRequest: PermissionRequest? = null
@@ -218,7 +220,7 @@ fun WebView() {
         }
     }
 
-    val mUrl = Constants.MAIN_URL // "https://google.com"
+    //val mUrl = Constants.MAIN_URL // "https://google.com"
 
 
     AndroidView(factory = {
@@ -246,9 +248,11 @@ fun WebView() {
                 javaScriptCanOpenWindowsAutomatically = true
                 defaultTextEncodingName = "utf-8"
             }
+            println("loading URL: $mUrl")
             loadUrl(mUrl)
         }
     }, update = {
+        println("NEW URL: ${it.url}")
         webView = it
         //if(!urlLoaded.value) it.loadUrl(mUrl)
         //urlLoaded.value = true
