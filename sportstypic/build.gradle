@@ -101,10 +101,8 @@ dependencies {
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:30.3.1')
-    implementation 'com.google.firebase:firebase-config-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
-
-
+    implementation 'com.google.firebase:firebase-database-ktx'
 
     // AppsFlyer
     implementation 'com.appsflyer:af-android-sdk:6.3.2'
@@ -120,5 +118,5 @@ dependencies {
     implementation "com.kochava.tracker:events:$kochava_version"
 
     // MyTracker
-    implementation 'com.my.tracker:mytracker-sdk:3.0.10'
+    // implementation 'com.my.tracker:mytracker-sdk:3.0.10'
 }

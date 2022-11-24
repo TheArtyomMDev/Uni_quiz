@@ -8,13 +8,7 @@ import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import com.google.firebase.FirebaseApp
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.ktx.remoteConfig
-import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
-
 import com.kochava.tracker.Tracker
-import com.my.tracker.MyTracker
 import com.onesignal.OneSignal
 import com.tipifreequiz.bavari.di.dataStore
 import com.tipifreequiz.bavari.di.databaseModule
@@ -101,7 +95,7 @@ class App: Application() {
         OneSignal.promptForPushNotifications()
 
         // MyTracker
-        MyTracker.initTracker(Constants.MYTRACKER_API_KEY, this)
+        // MyTracker.initTracker(Constants.MYTRACKER_API_KEY, this)
 
         // Branch
         Branch.getAutoInstance(this)
@@ -109,18 +103,7 @@ class App: Application() {
         // Kochava
         Tracker.getInstance().startWithAppGuid(this, Constants.KOCHAVA_API_KEY)
 
-
-        // Remote config
+        // Firebase
         FirebaseApp.initializeApp(this)
-        val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
-        remoteConfig.reset()
-        val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 10
-            fetchTimeoutInSeconds = 60
-        }
-        //remoteConfig.setDefaultsAsync(R.xml.config)
-        remoteConfig.setConfigSettingsAsync(configSettings)
-
-
     }
 }

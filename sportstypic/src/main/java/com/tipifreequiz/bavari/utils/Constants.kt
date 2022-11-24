@@ -15,11 +15,7 @@ object Constants {
     val CAMPAIGN_NAME = stringPreferencesKey("campaign")
     val AF_CHANNEL = stringPreferencesKey("af_channel")
 
-    const val API_URL = "https://comappm.com"
-    const val MAIN_URL = "https://comappm.com/noopls"
-
-    const val APPSFLYER_API_KEY = "6GcmqsTy5D55wdGzRyuUn5"
-    const val ONESIGNAL_API_KEY = "9b867574-8b09-4d82-a24b-8ed9269f4b0f"
+    const val APPSFLYER_API_KEY = "UzwYoihHTvdx2YYxZQ7hBZ"
+    const val ONESIGNAL_API_KEY = "0f42fef3-72f3-4ff0-b3dc-a706ebf1b4fc"
     const val KOCHAVA_API_KEY = "koapp-go-mcamp-4f926l71x"
-    const val MYTRACKER_API_KEY = "62874364010790166820"
 }

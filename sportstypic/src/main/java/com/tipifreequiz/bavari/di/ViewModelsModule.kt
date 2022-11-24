@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 var viewModelsModule = module {
     viewModel {
-        MainViewModel(get(), get(), get(), get())
+        MainViewModel(get(), get(), get())
     }
 }
