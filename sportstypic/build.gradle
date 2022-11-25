@@ -114,8 +114,11 @@ dependencies {
     implementation 'io.branch.sdk.android:library:5.2.5'
 
     // Kochava
-    implementation "com.kochava.tracker:tracker:$kochava_version"
-    implementation "com.kochava.tracker:events:$kochava_version"
+    implementation("com.kochava.tracker:tracker:$kochava_version") // Required
+    implementation("com.kochava.tracker:events:$kochava_version") // Optional
+    implementation("com.kochava.tracker:engagement:$kochava_version") // Optional
+    implementation("com.kochava.tracker:datapointnetwork:$kochava_version") // Optional
+    implementation("com.kochava.tracker:legacyreferrer:$kochava_version")
 
     // MyTracker
     // implementation 'com.my.tracker:mytracker-sdk:3.0.10'

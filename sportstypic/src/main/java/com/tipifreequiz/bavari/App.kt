@@ -101,7 +101,7 @@ class App: Application() {
         Branch.getAutoInstance(this)
 
         // Kochava
-        Tracker.getInstance().startWithAppGuid(this, Constants.KOCHAVA_API_KEY)
+        Tracker.getInstance().startWithAppGuid(applicationContext, Constants.KOCHAVA_API_KEY)
 
         // Firebase
         FirebaseApp.initializeApp(this)
