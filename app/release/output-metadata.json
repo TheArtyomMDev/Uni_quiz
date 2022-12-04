@@ -4,16 +4,16 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.tipifreequiz.bavari",
+  "applicationId": "com.quizking.draft.sport",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 2,
-      "versionName": "2.0",
-      "outputFile": "sportstypic-release.apk"
+      "versionCode": 1,
+      "versionName": "1.0",
+      "outputFile": "kingdragft-release.apk"
     }
   ],
   "elementType": "File"

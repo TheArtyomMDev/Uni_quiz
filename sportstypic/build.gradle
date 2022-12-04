@@ -119,7 +119,4 @@ dependencies {
     implementation("com.kochava.tracker:engagement:$kochava_version") // Optional
     implementation("com.kochava.tracker:datapointnetwork:$kochava_version") // Optional
     implementation("com.kochava.tracker:legacyreferrer:$kochava_version")
-
-    // MyTracker
-    // implementation 'com.my.tracker:mytracker-sdk:3.0.10'
 }
