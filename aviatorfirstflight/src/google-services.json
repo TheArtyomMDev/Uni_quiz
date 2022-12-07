@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1023351379228",
+    "project_id": "avator-artyom",
+    "storage_bucket": "avator-artyom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023351379228:android:34611971c3676ce51916d9",
+        "android_client_info": {
+          "package_name": "com.avijekrl.proald"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023351379228-540p75obban9j14ns5um5evvc98r411s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZJbG7Yl5daSSPO60iDfT1nSwu9KuWZZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023351379228-540p75obban9j14ns5um5evvc98r411s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/aviatorfirstflight" />
             <option value="$PROJECT_DIR$/kingdragft" />
             <option value="$PROJECT_DIR$/sportfotoquiz" />
             <option value="$PROJECT_DIR$/sportsfriend" />
